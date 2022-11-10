@@ -11,10 +11,15 @@ class JsonLdScraper extends Scraper {
     var json = [];
     const jsonLdFromHtml = this.chtml('script[type="application/ld+json"]');
 
-    Object.entries(jsonLdFromHtml).forEach(([ , item]) => {
+    Object.entries(jsonLdFromHtml).forEach(([, item]) => {
       let contents;
       try {
-        if (item && item.children && item.children[0] && item.children[0].data) {
+        if (
+          item &&
+          item.children &&
+          item.children[0] &&
+          item.children[0].data
+        ) {
           contents = JSON.parse(item.children[0].data);
         }
       } catch (e) {
@@ -44,7 +49,9 @@ class JsonLdScraper extends Scraper {
     // @graph: king arthur, 12tomatoes, sallysbaking, cookie&kate
     // other: martha stewart, foodnetwork, eatingwell, allrecipes, myrecipes, seriouseats, skinnytaste
     const graphLevel = this.meta['@graph'] || this.meta;
-    this.recipeItem = Object.values(graphLevel).find(item => (item['@type'] === 'Recipe'));
+    this.recipeItem = Object.values(graphLevel).find(
+      (item) => item['@type'].includes('Recipe') || item['@type'] === 'Recipe'
+    );
   }
 }
 
