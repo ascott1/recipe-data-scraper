@@ -1,3 +1,4 @@
+// prettier-ignore
 export const microdataUrls = {
   smittenkitchen: {
     originalUrl: 'https://smittenkitchen.com/2020/06/smashed-potatoes-with-sweet-corn-relish/', // itemprop microdata!!
@@ -17,6 +18,7 @@ export const microdataUrls = {
   },
 };
 
+// prettier-ignore
 export const jsonLdUrls = {
   kingarthurflour: {
     originalUrl: 'https://www.kingarthurflour.com/recipes/pain-au-levain-recipe',

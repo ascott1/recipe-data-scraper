@@ -1,6 +1,6 @@
 import proxyquire from 'proxyquire';
 import sinon from 'sinon';
-import { should } from "chai";
+import { should } from 'chai';
 should();
 import { MATCH_HTML_TAGS, MATCH_LINE_BREAK, MATCH_MULTI_SPACE } from './regex';
 

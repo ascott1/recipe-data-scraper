@@ -54,7 +54,8 @@ class Scraper {
       return this.finalRecipe;
     } catch (error) {
       throw {
-        message: 'found recipe information, there was a problem with mapping the data',
+        message:
+          'found recipe information, there was a problem with mapping the data',
         type: this.type,
       };
     }

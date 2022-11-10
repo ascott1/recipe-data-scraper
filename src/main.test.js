@@ -1,5 +1,5 @@
 import proxyquire from 'proxyquire';
-import { should } from "chai";
+import { should } from 'chai';
 import sinon from 'sinon';
 should();
 
@@ -19,22 +19,22 @@ describe('main(url)', () => {
     constructor(chtml) {
       this.chtml = chtml;
     }
-    getRecipe = getRecipeMicrodataStub
-    print = printMicrodataStub
+    getRecipe = getRecipeMicrodataStub;
+    print = printMicrodataStub;
   }
 
   class JsonLdScraperClass {
     constructor(chtml) {
       this.chtml = chtml;
     }
-    getRecipe = getRecipeJsonLdStub
-    print = printJsonLdStub
+    getRecipe = getRecipeJsonLdStub;
+    print = printJsonLdStub;
   }
 
   before(() => {
     recipeDataScraper = proxyquire.noCallThru().load('./main', {
-      'axios': axiosStub,
-      'cheerio': cheerioStub,
+      axios: axiosStub,
+      cheerio: cheerioStub,
       './scrapers/JsonLdScraper': JsonLdScraperClass,
       './scrapers/MicrodataScraper': MicrodataScraperClass,
       './utils/logger': loggerStub,
@@ -215,7 +215,7 @@ describe('main(url)', () => {
       axiosStub.withArgs(testUrl).returns(mockAxiosResp);
       cheerioStub.load.returns(mockChtmlResp);
       getRecipeJsonLdStub.reset();
-      getRecipeJsonLdStub.throws({ message: 'well well'});
+      getRecipeJsonLdStub.throws({ message: 'well well' });
       getRecipeMicrodataStub.withArgs().returns(mockRecipeMicrodata);
       result = await recipeDataScraper(testUrl);
     });
@@ -331,11 +331,17 @@ describe('main(url)', () => {
     });
 
     it('logger should be invoked with jsonLd error', () => {
-      sinon.assert.calledWith(loggerStub.getCall(0), 'main:JsonLdScraper', { message: "well well", url: "https://someurl.test2" });
+      sinon.assert.calledWith(loggerStub.getCall(0), 'main:JsonLdScraper', {
+        message: 'well well',
+        url: 'https://someurl.test2',
+      });
     });
 
     it('logger should be invoked with microdata error', () => {
-      sinon.assert.calledWith(loggerStub.getCall(1), 'main:MicrodataScraper', { message: "no recipe here", url: "https://someurl.test2" });
+      sinon.assert.calledWith(loggerStub.getCall(1), 'main:MicrodataScraper', {
+        message: 'no recipe here',
+        url: 'https://someurl.test2',
+      });
     });
 
     it('error should be caught with correct message', () => {

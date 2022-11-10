@@ -50,12 +50,16 @@ async function enterCustomUrl() {
 */
 async function recipeTesterPrintAll() {
   console.log(' - - - - - - - - - - - - - - - - -');
-  const printPresetOption = question(`Would you like to run through the preset urls? (y/n): `);
+  const printPresetOption = question(
+    `Would you like to run through the preset urls? (y/n): `
+  );
 
   if (printPresetOption === 'y') {
     printRecipeCollection({ ...microdataUrls, ...jsonLdUrls });
   } else {
-    const testCustomUrlOption = question(`Would you like to test a custom url? (y/n) `);
+    const testCustomUrlOption = question(
+      `Would you like to test a custom url? (y/n) `
+    );
     if (testCustomUrlOption === 'y') {
       enterCustomUrl(testCustomUrlOption);
     } else {
@@ -66,4 +70,3 @@ async function recipeTesterPrintAll() {
 }
 
 export default recipeTesterPrintAll();
-

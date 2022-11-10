@@ -1,5 +1,5 @@
 import proxyquire from 'proxyquire';
-import { should } from "chai";
+import { should } from 'chai';
 import sinon from 'sinon';
 should();
 
@@ -24,8 +24,8 @@ describe('Scraper class', () => {
 
     before(async () => {
       class mockClass extends myClass {
-        testForMetadata() { }
-        findRecipeItem() { }
+        testForMetadata() {}
+        findRecipeItem() {}
       }
 
       scraper = new mockClass(chtmlStub);
@@ -43,7 +43,7 @@ describe('Scraper class', () => {
 
     before(async () => {
       class mockClass extends myClass {
-        findRecipeItem() { }
+        findRecipeItem() {}
       }
 
       try {
@@ -54,7 +54,9 @@ describe('Scraper class', () => {
     });
 
     it('should throw an error', () => {
-      error.should.eql({ message: 'testForMetadata function must be implemented by child class' });
+      error.should.eql({
+        message: 'testForMetadata function must be implemented by child class',
+      });
     });
   });
 
@@ -63,7 +65,7 @@ describe('Scraper class', () => {
 
     before(async () => {
       class mockClass extends myClass {
-        testForMetadata() { }
+        testForMetadata() {}
       }
 
       try {
@@ -74,7 +76,9 @@ describe('Scraper class', () => {
     });
 
     it('should throw an error', () => {
-      error.should.eql({ message: 'findRecipeItem function must be implemented by child class' });
+      error.should.eql({
+        message: 'findRecipeItem function must be implemented by child class',
+      });
     });
   });
 
@@ -217,7 +221,6 @@ describe('Scraper class', () => {
     });
   });
 
-
   describe('getRecipe when buildRecipeModel throws an exception', () => {
     let scraper;
     let error;
@@ -263,16 +266,19 @@ describe('Scraper class', () => {
     });
 
     it('buildRecipeModel should be called', () => {
-      sinon.assert.calledOnceWithExactly(buildRecipeModelStub, scraper.recipeItem);
+      sinon.assert.calledOnceWithExactly(
+        buildRecipeModelStub,
+        scraper.recipeItem
+      );
     });
 
     it('recipe mapping error should be thrown', () => {
       error.should.eql({
-        message: 'found recipe information, there was a problem with mapping the data',
+        message:
+          'found recipe information, there was a problem with mapping the data',
         type: 'tester-3',
       });
     });
-
   });
 
   describe('print()', () => {
@@ -287,7 +293,7 @@ describe('Scraper class', () => {
       scraper = new mockClass(chtmlStub);
       scraper.recipeItem = {
         name: 'eat my food',
-        forget: 'me,'
+        forget: 'me,',
       };
       scraper.finalRecipe = {
         name: 'eat my food my-name',

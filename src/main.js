@@ -7,9 +7,7 @@ import logger from './utils/logger';
 const errorMessage = 'Could not find recipe data';
 
 export default async (url, options = {}) => {
-  const {
-    printToConsole,
-  } = options;
+  const { printToConsole } = options;
 
   let chtml;
 

@@ -1,5 +1,5 @@
 import proxyquire from 'proxyquire';
-import { should } from "chai";
+import { should } from 'chai';
 import sinon from 'sinon';
 should();
 

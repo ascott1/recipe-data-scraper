@@ -6,11 +6,11 @@ import recipeDataScraper from '../src/main';
 */
 async function recipeUrlTester() {
   console.log(' - - - - - - - - - - - - - - - - -');
-  console.log('Welcome to the Recipe Url tester!')
+  console.log('Welcome to the Recipe Url tester!');
   const answer = question(`Enter Recipe Url: `);
 
   if (!answer) {
-    console.log('Quitting! Come back when you\'re ready!');
+    console.log("Quitting! Come back when you're ready!");
     process.exit(1);
   }
 

@@ -16,8 +16,10 @@ class MicrodataScraper extends Scraper {
   }
 
   findRecipeItem() {
-    const recipe = Object.values(this.meta.items).find(item => (item.type[0].indexOf('Recipe') > -1));
-    this.recipeItem = (recipe) ? recipe.properties : null;
+    const recipe = Object.values(this.meta.items).find(
+      (item) => item.type[0].indexOf('Recipe') > -1
+    );
+    this.recipeItem = recipe ? recipe.properties : null;
   }
 }
 

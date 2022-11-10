@@ -1,11 +1,12 @@
-import { should } from "chai";
+import { should } from 'chai';
 import { MATCH_LINE_BREAK, MATCH_HTML_TAGS, MATCH_MULTI_SPACE } from './regex';
 should();
 
 describe('regex', () => {
   describe('MATCH_HTML_TAGS expected behavior', () => {
     describe('when matched against a string with no html', () => {
-      const strWithoutHtml = '<p>test a <a href="go-somewhere">string</a> with</p> html';
+      const strWithoutHtml =
+        '<p>test a <a href="go-somewhere">string</a> with</p> html';
 
       it('the string should not be modified', () => {
         strWithoutHtml
@@ -15,7 +16,8 @@ describe('regex', () => {
     });
 
     describe('when matched against a string with html', () => {
-      const strWithHtml = '<p>test a <a href="go-somewhere">string</a> with</p> html';
+      const strWithHtml =
+        '<p>test a <a href="go-somewhere">string</a> with</p> html';
 
       it('the html tags should be removed', () => {
         strWithHtml
@@ -47,12 +49,15 @@ describe('regex', () => {
     });
 
     describe('when matched against a string with multiple spaces grouped together', () => {
-      const testString = 'Preparation                                        Make the mango hot sauce: Heat the oil in a medium pan over low';
+      const testString =
+        'Preparation                                        Make the mango hot sauce: Heat the oil in a medium pan over low';
 
       it('the multiple spaces should be consolidated into one', () => {
         testString
           .replace(MATCH_MULTI_SPACE, ' ')
-          .should.eql('Preparation Make the mango hot sauce: Heat the oil in a medium pan over low');
+          .should.eql(
+            'Preparation Make the mango hot sauce: Heat the oil in a medium pan over low'
+          );
       });
     });
 
@@ -69,7 +74,8 @@ describe('regex', () => {
 
   describe('MATCH_LINE_BREAK expected behavior', () => {
     describe('when matched against a string with &nbsp;', () => {
-      const testString = 'Make the mango hot sauce: Heat the oil in a medium pan over low\n' +
+      const testString =
+        'Make the mango hot sauce: Heat the oil in a medium pan over low\n' +
         'heat. Add the shallots, chiles, garlic, turmeric, and mango and sauté\n' +
         'about two-thirds of the way with vegetable oil. Heat over medium heat\n' +
         'until the oil reaches 375°F.';
@@ -77,7 +83,9 @@ describe('regex', () => {
       it('the string should be consolidated and line breaks replaced with spaces', () => {
         testString
           .replace(MATCH_LINE_BREAK, ' ')
-          .should.eql('Make the mango hot sauce: Heat the oil in a medium pan over low heat. Add the shallots, chiles, garlic, turmeric, and mango and sauté about two-thirds of the way with vegetable oil. Heat over medium heat until the oil reaches 375°F.');
+          .should.eql(
+            'Make the mango hot sauce: Heat the oil in a medium pan over low heat. Add the shallots, chiles, garlic, turmeric, and mango and sauté about two-thirds of the way with vegetable oil. Heat over medium heat until the oil reaches 375°F.'
+          );
       });
     });
   });

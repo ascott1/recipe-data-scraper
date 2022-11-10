@@ -1,13 +1,14 @@
 import proxyquire from 'proxyquire';
-import { should } from "chai";
+import { should } from 'chai';
 should();
 
 describe('transformIsoToString', () => {
   let transformIsoToString;
 
   before(() => {
-    transformIsoToString = proxyquire.noCallThru().load('./transformIsoToString', {
-    }).default;
+    transformIsoToString = proxyquire
+      .noCallThru()
+      .load('./transformIsoToString', {}).default;
   });
 
   describe('expected behavior', () => {
